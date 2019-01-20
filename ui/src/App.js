@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router } from 'preact-router'
 import LogoPanel from 'components/logoPanel'
 import Nav from 'components/nav'
 import AboutScreen from 'screens/about'
@@ -25,15 +25,13 @@ export default class App extends React.Component {
     return (
       <div className={styles.container}>
         <LogoPanel />
-        <Router>
-          <Nav />
+        <Nav />
 
-          <div className={styles.content}>
-            <Route exact path='/' component={MainScreen} />
-            <Route path={PRODUCTS_PATH} render={this.renderProductsScreen} />
-            <Route path={ABOUT_PATH} component={AboutScreen} />
-            <Route path={LOCATIONS_PATH} component={LocationsScreen} />
-          </div>
+        <Router>
+          <MainScreen default path='/' />
+          <ProductsScreen products={ProductStore.getAll()} path={PRODUCTS_PATH} />
+          <AboutScreen path={ABOUT_PATH} />
+          <LocationsScreen path={LOCATIONS_PATH} />
         </Router>
       </div>
     )

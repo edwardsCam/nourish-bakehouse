@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'preact-router/match'
 import classnames from 'classnames'
 import { PRODUCTS_PATH, ABOUT_PATH, LOCATIONS_PATH } from '../../constants'
 import styles from './index.scss'
@@ -36,8 +36,11 @@ export default class Nav extends React.PureComponent {
         styles.homeLink,
         !this.state.isMounted && styles.initial
       )}
-      children={<Link to='/' children='Home' />}
-    />
+    >
+      <Link href='/'>
+        {'Home'}
+      </Link>
+    </li>
   )
 
   renderProductsLink = () => (
@@ -47,8 +50,11 @@ export default class Nav extends React.PureComponent {
         styles.productsLink,
         !this.state.isMounted && styles.initial
       )}
-      children={<Link to={PRODUCTS_PATH} children='Products' />}
-    />
+    >
+      <Link href={PRODUCTS_PATH}>
+        {'Products'}
+      </Link>
+    </li>
   )
 
   renderAboutLink = () => (
@@ -58,8 +64,11 @@ export default class Nav extends React.PureComponent {
         styles.aboutLink,
         !this.state.isMounted && styles.initial
       )}
-      children={<Link to={ABOUT_PATH} children='About' />}
-    />
+    >
+      <Link href={ABOUT_PATH}>
+        {'About'}
+      </Link>
+    </li>
   )
 
   renderLocationsLink = () => (
@@ -69,7 +78,10 @@ export default class Nav extends React.PureComponent {
         styles.locationsLink,
         !this.state.isMounted && styles.initial
       )}
-      children={<Link to={LOCATIONS_PATH} children='Locations' />}
-    />
+    >
+      <Link href={LOCATIONS_PATH}>
+        {'Locations'}
+      </Link>
+    </li>
   )
 }
